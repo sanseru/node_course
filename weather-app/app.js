@@ -1,5 +1,5 @@
 const request = require('postman-request')
-
+const geocode = require('./utils/geocode')
 // const url = 'http://api.weatherstack.com/current?access_key=03d2254069a541772256598678b152ac&query=-6.291230,106.817192&units=f'
 
 // request({url: url, json: true}, (error, response)=> {
@@ -26,22 +26,31 @@ const request = require('postman-request')
 // })
 
 // Geocoding
-const url2 = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoic2Fuc2VydSIsImEiOiJja2E2aDFjdnMwOGduMndwMGQ0aTd3amFhIn0.dDMB401IShCAv6jFHqHnJg&limit=1'
+// const url2 = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoic2Fuc2VydSIsImEiOiJja2E2aDFjdnMwOGduMndwMGQ0aTd3amFhIn0.dDMB401IShCAv6jFHqHnJg&limit=1'
 
-request({url:url2, json: true},(error, response)=> {
+// request({url:url2, json: true},(error, response)=> {
 
-    if(error){
-        console.log('Unable to connect to server')
-    }else if (response.body.features.length === 0){
-        console.log('No Matching Result')
-    }else{
-        const latitude = response.body.features[0].center[1]
-        const longitude = response.body.features[0].center[0]
+//     if(error){
+//         console.log('Unable to connect to server')
+//     }else if (response.body.features.length === 0){
+//         console.log('No Matching Result')
+//     }else{
+//         const latitude = response.body.features[0].center[1]
+//         const longitude = response.body.features[0].center[0]
     
-        console.log('Latitude : ' + latitude )
-        console.log('Longitude : ' + longitude )
-    }
+//         console.log('Latitude : ' + latitude )
+//         console.log('Longitude : ' + longitude )
+//     }
 
 
 
+// })
+
+
+
+
+
+geocode('kp.kandang',(error, data)=>{
+        console.log('Error',error)
+        console.log('Data',data)
 })
